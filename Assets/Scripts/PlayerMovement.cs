@@ -4,8 +4,10 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
+    private static readonly int IsClimbing = Animator.StringToHash("isClimbing");
     [SerializeField] private float runSpeed = 10f;
     [SerializeField] private float jumpSpeed = 5f;
+    [SerializeField] private float climbSpeed = 1.001f;
 
     private Vector2 moveInput;
     private Animator myAnimator;
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Run();
         FlipSprite();
+        ClimbLadder();
     }
 
     private void OnMove(InputValue value)
@@ -50,7 +53,8 @@ public class PlayerMovement : MonoBehaviour
         myRigidbody.velocity = playerVelocity;
 
         var doesPlayerHasHorizontalSpeed = Mathf.Abs(velocityX) > Mathf.Epsilon;
-        if (doesPlayerHasHorizontalSpeed) myAnimator.SetBool(IsRunning, true);
+        myAnimator.SetBool(IsRunning, doesPlayerHasHorizontalSpeed);
+        ;
     }
 
     private void FlipSprite()
@@ -58,5 +62,22 @@ public class PlayerMovement : MonoBehaviour
         var velocityX = myRigidbody.velocity.x;
         var doesPlayerHasHorizontalSpeed = Mathf.Abs(velocityX) > Mathf.Epsilon;
         if (doesPlayerHasHorizontalSpeed) transform.localScale = new Vector2(Mathf.Sign(velocityX), 1f);
+    }
+
+    private void ClimbLadder()
+    {
+        LayerMask climbing = LayerMask.GetMask("Climbing");
+        var isTouchingClimbingArea = myCapsuleCollider.IsTouchingLayers(climbing);
+
+        if (!isTouchingClimbingArea) return;
+
+        var velocityY = myRigidbody.velocity.y * climbSpeed;
+        var velocityX = moveInput.x;
+        var climbVelocity = new Vector2(velocityX, velocityY);
+
+        myRigidbody.velocity = climbVelocity;
+        var doesPlayerHasVerticalSpeed = Mathf.Abs(velocityY) > Mathf.Epsilon;
+
+        myAnimator.SetBool(IsClimbing, doesPlayerHasVerticalSpeed);
     }
 }
