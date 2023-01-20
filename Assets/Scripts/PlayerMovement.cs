@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed = 5f;
     [SerializeField] private float climbSpeed = 5f;
     [SerializeField] private float gravityScaleAtStart = 8f;
+    [SerializeField] private GameObject myBullet;
+    [SerializeField] private Transform gun;
     private bool isAlive = true;
 
     private Vector2 moveInput;
@@ -25,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeetCollider = GetComponent<BoxCollider2D>();
-        GetComponent<PlayerInput>();
     }
 
     private void Update()
@@ -56,6 +57,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (value.isPressed)
             myRigidbody.velocity += new Vector2(0f, jumpSpeed);
+    }
+
+    private void OnFire(InputValue value)
+    {
+        if (!isAlive) return;
+
+        Instantiate(myBullet, gun.position, transform.rotation);
     }
 
     private void Run()
