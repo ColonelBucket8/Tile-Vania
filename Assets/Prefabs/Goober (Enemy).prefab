@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3016101566900082759}
   m_Layer: 11
   m_Name: Goober (Enemy)
-  m_TagString: Enemies
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1748504535
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 448612263, guid: 573421269ccb13f40b03489e6ac2fc19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
