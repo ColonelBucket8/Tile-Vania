@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Die()
     {
-        LayerMask enemies = LayerMask.GetMask("Enemies");
+        LayerMask enemies = LayerMask.GetMask("Enemies", "Hazards");
         bool isTouchingEnemies = myBodyCollider.IsTouchingLayers(enemies);
 
         if (isTouchingEnemies)
