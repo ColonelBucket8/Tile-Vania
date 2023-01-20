@@ -9,11 +9,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpSpeed = 5f;
     [SerializeField] private float climbSpeed = 5f;
     [SerializeField] private float gravityScaleAtStart = 8f;
+    private bool isAlive = true;
 
     private Vector2 moveInput;
     private Animator myAnimator;
     private CapsuleCollider2D myBodyCollider;
     private BoxCollider2D myFeetCollider;
+    private PlayerInput myInput;
     private Rigidbody2D myRigidbody;
 
     private void Start()
@@ -23,22 +25,30 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeetCollider = GetComponent<BoxCollider2D>();
+        myInput = GetComponent<PlayerInput>();
     }
 
     private void Update()
     {
+        if (!isAlive) return;
+
         Run();
         FlipSprite();
         ClimbLadder();
+        Die();
     }
 
     private void OnMove(InputValue value)
     {
+        if (!isAlive) return;
+
         moveInput = value.Get<Vector2>();
     }
 
     private void OnJump(InputValue value)
     {
+        if (!isAlive) return;
+
         LayerMask ground = LayerMask.GetMask("Ground");
         bool isTouchingGround = myFeetCollider.IsTouchingLayers(ground);
 
@@ -94,5 +104,13 @@ public class PlayerMovement : MonoBehaviour
         // Set climbing animation
         bool doesPlayerHasVerticalSpeed = Mathf.Abs(velocityY) > Mathf.Epsilon;
         myAnimator.SetBool(IsClimbing, doesPlayerHasVerticalSpeed);
+    }
+
+    private void Die()
+    {
+        LayerMask enemies = LayerMask.GetMask("Enemies");
+        bool isTouchingEnemies = myBodyCollider.IsTouchingLayers(enemies);
+
+        if (isTouchingEnemies) isAlive = false;
     }
 }
