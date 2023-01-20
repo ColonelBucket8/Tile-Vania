@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private static readonly int IsRunning = Animator.StringToHash("isRunning");
     private static readonly int IsClimbing = Animator.StringToHash("isClimbing");
+    private static readonly int Dying = Animator.StringToHash("Dying");
     [SerializeField] private float runSpeed = 10f;
     [SerializeField] private float jumpSpeed = 5f;
     [SerializeField] private float climbSpeed = 5f;
@@ -15,7 +16,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator myAnimator;
     private CapsuleCollider2D myBodyCollider;
     private BoxCollider2D myFeetCollider;
-    private PlayerInput myInput;
     private Rigidbody2D myRigidbody;
 
     private void Start()
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeetCollider = GetComponent<BoxCollider2D>();
-        myInput = GetComponent<PlayerInput>();
+        GetComponent<PlayerInput>();
     }
 
     private void Update()
@@ -111,6 +111,15 @@ public class PlayerMovement : MonoBehaviour
         LayerMask enemies = LayerMask.GetMask("Enemies");
         bool isTouchingEnemies = myBodyCollider.IsTouchingLayers(enemies);
 
-        if (isTouchingEnemies) isAlive = false;
+        if (isTouchingEnemies)
+        {
+            isAlive = false;
+
+            // Throw the player up in the air
+            myRigidbody.AddRelativeForce(new Vector2(0f, 1000f));
+
+            // Set dying animation
+            myAnimator.SetTrigger(Dying);
+        }
     }
 }

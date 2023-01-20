@@ -4335,6 +4335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 565685927}
   - component: {fileID: 565685926}
+  - component: {fileID: 565685928}
   m_Layer: 0
   m_Name: State Driven Camera
   m_TagString: Untagged
@@ -4399,6 +4400,8 @@ MonoBehaviour:
     m_ParentHash: 756556552
   - m_Hash: -725336713
     m_ParentHash: 756556552
+  - m_Hash: -1546996312
+    m_ParentHash: 756556552
 --- !u!4 &565685927
 Transform:
   m_ObjectHideFlags: 0
@@ -4417,6 +4420,29 @@ Transform:
   m_Father: {fileID: 1107744571}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &565685928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565685925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: -1
+  m_Gain: 1
+  m_Use2DDistance: 1
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &884408092
 GameObject:
   m_ObjectHideFlags: 0
