@@ -128,6 +128,7 @@ public class PlayerMovement : MonoBehaviour
 
             // Set dying animation
             myAnimator.SetTrigger(Dying);
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
         }
     }
 }
