@@ -12,11 +12,26 @@ public class Bullet : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerMovement>();
         xSpeed = player.transform.localScale.x * bulletSpeed;
+        flip_bullet();
     }
+
 
     private void Update()
     {
         myRigidbody.velocity = new Vector2(xSpeed, 0);
+    }
+    private void flip_bullet()
+    {
+        // If facing right
+        if (player.transform.localScale.x > 0)
+        {
+            transform.localScale = new Vector2(transform.localScale.x, transform.localScale.y);
+        }
+        // If facing left
+        else
+        {
+            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D col)
