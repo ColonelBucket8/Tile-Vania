@@ -49,6 +49,8 @@ MonoBehaviour:
   musicVolume: 0.138
   bouncingClip: {fileID: 8300000, guid: d44ce6539acc21449b5db27c77eafaa3, type: 3}
   bouncingVolume: 0.075
+  firingClip: {fileID: 8300000, guid: 09331c125371bda41b62d2dc7a01bc8b, type: 3}
+  firingVolume: 0.102
 --- !u!82 &1865990419
 AudioSource:
   m_ObjectHideFlags: 0

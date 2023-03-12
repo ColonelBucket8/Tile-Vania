@@ -76,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isAlive) return;
 
+        myAudioSession.PlayFiringClip();
         Instantiate(myBullet, gun.position, transform.rotation);
     }
 

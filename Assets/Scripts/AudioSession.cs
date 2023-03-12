@@ -12,6 +12,9 @@ public class AudioSession : MonoBehaviour
     [SerializeField] private AudioClip bouncingClip;
     [SerializeField][Range(0f, 1f)] private float bouncingVolume = 1f;
 
+    [SerializeField] private AudioClip firingClip;
+    [SerializeField][Range(0f, 1f)] private float firingVolume = 1f;
+
 
     private void Awake()
     {
@@ -35,6 +38,11 @@ public class AudioSession : MonoBehaviour
     public void PlayBouncingClip()
     {
         PlayClip(bouncingClip, bouncingVolume);
+    }
+
+    public void PlayFiringClip()
+    {
+        PlayClip(firingClip, firingVolume);
     }
 
     private void PlayClip(AudioClip clip, float volume)
