@@ -6,12 +6,14 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private PlayerMovement player;
     private float xSpeed;
+    private AudioSession audioSession;
 
     private void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerMovement>();
         xSpeed = player.transform.localScale.x * bulletSpeed;
+        audioSession = FindObjectOfType<AudioSession>();
         flipBullet();
     }
 
@@ -41,7 +43,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy")) Destroy(other.gameObject);
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            audioSession.PlayBulletHitEnemyClip();
+            Destroy(other.gameObject);
+        }
 
         // Destroy me
         Destroy(gameObject);

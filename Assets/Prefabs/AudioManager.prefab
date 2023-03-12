@@ -51,6 +51,8 @@ MonoBehaviour:
   bouncingVolume: 0.075
   firingClip: {fileID: 8300000, guid: 09331c125371bda41b62d2dc7a01bc8b, type: 3}
   firingVolume: 0.102
+  bulletHitEnemyClip: {fileID: 8300000, guid: 294984232da032f43871a836d2353443, type: 3}
+  bulletHitEnemyVolume: 0.107
 --- !u!82 &1865990419
 AudioSource:
   m_ObjectHideFlags: 0

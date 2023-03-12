@@ -15,6 +15,9 @@ public class AudioSession : MonoBehaviour
     [SerializeField] private AudioClip firingClip;
     [SerializeField][Range(0f, 1f)] private float firingVolume = 1f;
 
+    [SerializeField] private AudioClip bulletHitEnemyClip;
+    [SerializeField][Range(0f, 1f)] private float bulletHitEnemyVolume = 1f;
+
 
     private void Awake()
     {
@@ -45,7 +48,12 @@ public class AudioSession : MonoBehaviour
         PlayClip(firingClip, firingVolume);
     }
 
-    private void PlayClip(AudioClip clip, float volume)
+    public void PlayBulletHitEnemyClip()
+    {
+        PlayClip(bulletHitEnemyClip, bulletHitEnemyVolume);
+    }
+
+    private static void PlayClip(AudioClip clip, float volume)
     {
         Vector3 cameraPos = Camera.main.transform.position;
         AudioSource.PlayClipAtPoint(clip, cameraPos, volume);
