@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private CapsuleCollider2D myBodyCollider;
     private BoxCollider2D myFeetCollider;
     private Rigidbody2D myRigidbody;
+    private AudioSession myAudioSession;
+
 
     private void Start()
     {
@@ -27,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         myBodyCollider = GetComponent<CapsuleCollider2D>();
         myFeetCollider = GetComponent<BoxCollider2D>();
+        myAudioSession = FindObjectOfType<AudioSession>();
     }
 
     private void Update()
@@ -36,7 +39,17 @@ public class PlayerMovement : MonoBehaviour
         Run();
         FlipSprite();
         ClimbLadder();
+        Bouncing();
         Die();
+    }
+
+    private void Bouncing()
+    {
+        LayerMask bounce = LayerMask.GetMask("Bouncing");
+        if (myFeetCollider.IsTouchingLayers(bounce))
+        {
+            myAudioSession.PlayBouncingClip();
+        }
     }
 
     private void OnMove(InputValue value)

@@ -1,12 +1,17 @@
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioSession : MonoBehaviour
 {
-    private static AudioManager instance;
+    private static AudioSession instance;
 
     [Header("Music")]
     [SerializeField] private AudioClip musicClip;
     [SerializeField][Range(0f, 1f)] private float musicVolume = 1f;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip bouncingClip;
+    [SerializeField][Range(0f, 1f)] private float bouncingVolume = 1f;
+
 
     private void Awake()
     {
@@ -25,6 +30,11 @@ public class AudioManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    public void PlayBouncingClip()
+    {
+        PlayClip(bouncingClip, bouncingVolume);
     }
 
     private void PlayClip(AudioClip clip, float volume)

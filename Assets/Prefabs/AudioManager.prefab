@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicClip: {fileID: 8300000, guid: 30b8d7a0cb698b044b5282b005689ce2, type: 3}
   musicVolume: 0.138
+  bouncingClip: {fileID: 8300000, guid: d44ce6539acc21449b5db27c77eafaa3, type: 3}
+  bouncingVolume: 0.075
 --- !u!82 &1865990419
 AudioSource:
   m_ObjectHideFlags: 0
