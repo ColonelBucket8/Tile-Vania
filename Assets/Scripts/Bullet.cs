@@ -3,6 +3,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 9f;
+    [SerializeField] private int bulletDamage;
     private Rigidbody2D myRigidbody;
     private PlayerMovement player;
     private float xSpeed;
@@ -45,11 +46,26 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            HandleEnemyHealth(other);
             audioSession.PlayBulletHitEnemyClip();
-            Destroy(other.gameObject);
         }
 
         // Destroy me
         Destroy(gameObject);
+    }
+
+    private void HandleEnemyHealth(Collider2D other)
+    {
+        var enemyHealth = other.gameObject.GetComponent<Health>();
+
+        if (enemyHealth == null) return;
+
+        enemyHealth.ReduceHealth(bulletDamage);
+
+        if (enemyHealth.GetHealth() <= 0)
+        {
+            enemyHealth.PlayDieParticle();
+            Destroy(other.gameObject);
+        }
     }
 }
