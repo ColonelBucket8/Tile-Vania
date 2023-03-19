@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 324822202208924622}
   - component: {fileID: -7337266473234812910}
   - component: {fileID: 3016101566900082759}
+  - component: {fileID: 579950832225464570}
   m_Layer: 11
   m_Name: Goober (Enemy)
   m_TagString: Enemy
@@ -30,10 +31,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324822202208924609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.48, y: -3.524, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 5619272767270865381}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -76,7 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1748504535
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 448612263, guid: 573421269ccb13f40b03489e6ac2fc19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -185,3 +187,79 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20438671, y: 0.77991366}
   m_EdgeRadius: 0
+--- !u!114 &579950832225464570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324822202208924609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce89b0424f9e5494fa13ed30644bb368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  dieParticle: {fileID: 5663334441863686952, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+--- !u!1001 &6678610950948553182
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 324822202208924610}
+    m_Modifications:
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376301329864591843, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+      propertyPath: m_Name
+      value: Die Particle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+--- !u!4 &5619272767270865381 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1248794010095863867, guid: 9550532f0e7083742811ea32cdbaa1b3, type: 3}
+  m_PrefabInstance: {fileID: 6678610950948553182}
+  m_PrefabAsset: {fileID: 0}
