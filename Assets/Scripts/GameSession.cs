@@ -34,6 +34,11 @@ public class GameSession : MonoBehaviour
             ResetGameSession();
     }
 
+    /// <summary>
+    /// Reset the player position to the start of the current scene level
+    /// if the player still has life 
+    /// Reduce player's life by one
+    /// </summary>
     private void TakeLife()
     {
         playersLives--;

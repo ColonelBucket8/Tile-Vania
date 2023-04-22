@@ -54,6 +54,11 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// Reduce enemy health. If enemy health is below than zero, 
+    /// destroy the enemy object
+    /// </summary>
+    /// <param name="other"></param>
     private void HandleEnemyHealth(Collider2D other)
     {
         var enemyHealth = other.gameObject.GetComponent<Health>();

@@ -15,6 +15,11 @@ public class EnemyMovement : MonoBehaviour
         myRigidbody.velocity = new Vector2(moveSpeed, 0);
     }
 
+    /// <summary>
+    /// Enemy will change its direction when it collides
+    /// with the wall
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerExit2D(Collider2D other)
     {
         moveSpeed = -moveSpeed;

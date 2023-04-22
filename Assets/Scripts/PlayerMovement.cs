@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMove(InputValue value)
     {
+        // Disable movement when player is dead
         if (!isAlive) return;
 
         moveInput = value.Get<Vector2>();
@@ -61,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
+        // Disable jumping when player is dead
         if (!isAlive) return;
 
         LayerMask ground = LayerMask.GetMask("Ground");
