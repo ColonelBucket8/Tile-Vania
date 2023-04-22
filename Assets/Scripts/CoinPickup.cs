@@ -6,6 +6,7 @@ public class CoinPickup : MonoBehaviour
     [SerializeField] private float coinVolume = 0.3f;
     [SerializeField] private int pointsForCoinPickup = 100;
 
+    // To avoid player accidentally collect coin more than 2 times
     private bool wasCollected;
 
     private void OnTriggerEnter2D(Collider2D col)

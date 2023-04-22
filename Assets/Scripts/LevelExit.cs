@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelExit : MonoBehaviour
 {
+    // Add a delay when loading the next level
     [SerializeField] private float levelLoadDelay = 1f;
 
 
